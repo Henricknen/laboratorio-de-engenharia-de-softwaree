@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>palidromo</title>
+    <style>
+        .x {
+            text-align: center;
+            background-color: aquamarine
+        }
+    </style>
+</head>
+<body>
+
+    <div class="x">
+        <h1>Digite uma frase</h1>
+        <input type="text" value = "" id = "text">
+        <button id="button">Conferir</button>
+        <p id="result"></p>
+
+    </div>
+
+    <img src="palindrom.png" alt="">
+    <a href="index.html">Voltar</a>
+
+    <script>
+        const button = document.querySelector('#button');
+        const resultText = document.querySelector('#result');
+
+        function invertText(text) {
+            const changedText = text.split('').reverse().join('');
+            return text === changedText ? true : false;
+        }
+
+        button.addEventListener('click', () => {
+            const textValue = document.querySelector('#text').value;
+            const result = invertText(textValue);
+
+            result
+            ? resultText.innerHTML = 'A frase digitada é um palidromo'
+            : resultText.innerHTML = 'A frase digitada não é palidromo';
+        });
+    </script>
+
+</body>
+</html>

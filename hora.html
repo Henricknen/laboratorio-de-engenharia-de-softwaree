@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora</title>
+    <style>
+        .x {
+            text-align: center;
+            background-color: darkgoldenrod;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="x">
+        <h1>Relogio atual</h1>
+        <script>
+            function relogio() {
+                let data = new Date();
+                let hor = data.getHours();
+                let min = data.getMinutes();
+                let seg = data.getSeconds();
+
+                let horas = hor+ ":"+ min+ ":"+ seg;
+                document.getElementById("rel").value = horas;
+            }
+
+            let tempo = setInterval(relogio,1000);
+    </script>
+
+    <input type="text" id="rel"/><br>
+    <a href="index.html">Voltar</a>
+
+    </div>
+
+    <img src="relogio.webp" alt="">
+</body>
+</html>

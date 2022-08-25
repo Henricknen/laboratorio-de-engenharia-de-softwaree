@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo</title>
+    <style>
+       .x {
+           text-align: center;
+           background-color: aquamarine
+       }
+   </style>
+</head>
+<body>
+       <div class="x">
+              <h1>Adivinhe o numero...</h1>
+              <input/>
+              <button>Click e tente a Sorte</button><br><br>
+              <a href="index.html">Voltar</a>
+       </div>
+
+       <img src="numeros.jpg" alt="">
+
+<script>
+    function sorteia() {
+
+       return Math.round(Math.random() * 10);
+
+    }
+
+    function sorteiaNumeros(quantidade) {
+
+        let segredos = [];
+
+        let numero = 1;
+
+        while(numero <= quantidade) {
+
+              let numeroAleatorio = sorteia();
+              let achou = false;
+
+              if (numeroAleatorio !== 0) {
+                     for(let posicao = 0; posicao < segredos.length; posicao++) {
+
+                           if(segredos[posicao] == numeroAleatorio){
+                                achou = true;
+                                break;
+                           }
+
+                     }
+
+                     if (achou == false) {
+                           segredos.push(numeroAleatorio);
+                           numero++;
+                     }
+              }
+
+        }
+
+        return segredos;
+
+    }
+
+    let segredos = sorteiaNumeros(5);
+
+    console.log(segredos);
+
+    let input = document.querySelector("input");
+    input.focus();
+
+    function verifica() {
+
+       let achou = false;
+
+       for(let posicao = 0; posicao > segredos.length; posicao++) {
+
+              if(input.value == segredos[posicao]) {
+
+                     alert("Prabéns voê acertou...");
+                     achou = true;
+                     break;
+              } 
+       }
+
+       if(achou == false) {
+
+              alert("ERROR, tente novamente...");
+       }
+
+       input.value = "";
+       input.focus();
+
+    }
+
+    let button = document.querySelector("button");
+
+    button.onclick = verifica;
+
+</script>
+
+</body>
+</html>
